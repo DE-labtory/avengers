@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package mock
+package mock_test
 
 import (
 	"testing"
@@ -22,6 +22,7 @@ import (
 	"github.com/it-chain/engine/common/command"
 	"github.com/magiconair/properties/assert"
 	"time"
+	"github.com/it-chain/avengers/mock"
 )
 
 func TestNewNetworkManager(t *testing.T) {
@@ -49,14 +50,14 @@ func TestNetworkManager_GrpcCall(t *testing.T) {
 	}
 
 	for testName, test := range tests {
-		networkManager := NewNetworkManager()
+		networkManager := mock.NewNetworkManager()
 		t.Logf("running test case %s", testName)
 
 		deliverGrpc := &command.DeliverGrpc{
 			RecipientList: test.input.RecipientList,
 			Protocol:      test.input.Protocol,
 		}
-		networkManager.GrpcCall("message.deliver", *deliverGrpc, func() {})
+		networkManager.GrpcCall("1","message.deliver", *deliverGrpc, func() {})
 		t.Logf("end of test calling")
 		for _, processId := range test.input.RecipientList {
 			t.Logf("processId:%s is receiving", processId)
@@ -97,17 +98,17 @@ func TestNetworkManager_GrpcConsume(t *testing.T) {
 	for testName, test := range tests {
 		t.Logf("running test case %s", testName)
 
-		networkManager := NewNetworkManager()
+		networkManager := mock.NewNetworkManager()
 
 		deliverGrpc := &command.DeliverGrpc{
 			RecipientList: test.input.RecipientList,
 		}
-		networkManager.GrpcCall("message.deliver", *deliverGrpc, func() {})
+		networkManager.GrpcCall("1","message.deliver", *deliverGrpc, func() {})
 		t.Logf("end of calling!")
 		networkManager.GrpcConsume(test.input.ProcessId, "message.receive", test.input.handler)
 
 	}
 
-	time.Sleep(10 * time.Second)
+	time.Sleep(4 * time.Second)
 	assert.Equal(t, callbackIndex, 2)
 }

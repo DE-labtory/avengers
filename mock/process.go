@@ -24,8 +24,8 @@ import (
 
 type Process struct {
 	Id                  string
-	grpcCommandHandlers []func(command command.ReceiveGrpc) error
-	grpcCommandReceiver chan interface{}
+	GrpcCommandHandlers []func(command command.ReceiveGrpc) error
+	GrpcCommandReceiver chan interface{} //should be register to network's channel map
 }
 
 func NewProcess() Process {
@@ -33,6 +33,7 @@ func NewProcess() Process {
 }
 
 func (p *Process) Init(id string) {
+	p.Id = id
 	p.GrpcListen()
 }
 
@@ -45,8 +46,8 @@ func (p *Process) GrpcListen() {
 
 		for end {
 			select {
-			case message := <-p.grpcCommandReceiver:
-				for _, handler := range p.grpcCommandHandlers {
+			case message := <-p.GrpcCommandReceiver:
+				for _, handler := range p.GrpcCommandHandlers {
 					handler(message.(command.ReceiveGrpc))
 				}
 
@@ -57,9 +58,9 @@ func (p *Process) GrpcListen() {
 	}()
 }
 
-func (p *Process) RegisterHandler(handler func(command command.ReceiveGrpc) error) error {
-
-	p.grpcCommandHandlers = append(p.grpcCommandHandlers, handler)
-
-	return nil
-}
+//func (p *Process) RegisterHandler(handler func(command command.ReceiveGrpc) error) error {
+//
+//	p.GrpcCommandHandlers = append(p.GrpcCommandHandlers, handler)
+//
+//	return nil
+//}
