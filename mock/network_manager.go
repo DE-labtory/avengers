@@ -17,16 +17,18 @@
 package mock
 
 import (
-	"time"
-
 	"fmt"
 
+	"sync"
+
 	"github.com/it-chain/engine/common/command"
+	"time"
 )
 
 //network manager builds environment for communication between multiple nodes in network
 
 type NetworkManager struct {
+	mutex      sync.Mutex
 	ChannelMap map[string]map[string]chan interface{} // channel for receive deliverGrpc command
 }
 
@@ -37,9 +39,14 @@ func NewNetworkManager() NetworkManager {
 	}
 }
 
-func (n *NetworkManager) Set(processId string, queue string) error {
-	n.ChannelMap[processId] = make(map[string]chan interface{})
-	n.ChannelMap[processId][queue] = make(chan interface{})
+func (n *NetworkManager) Push(processId string, queue string, command interface{}) error {
+	if n.ChannelMap[processId][queue] == nil{
+		n.mutex.Lock()
+		defer n.mutex.Unlock()
+		n.ChannelMap[processId] = make(map[string]chan interface{})
+		n.ChannelMap[processId][queue] = make(chan interface{})
+	}
+	n.ChannelMap[processId][queue]<-command
 	return nil
 }
 
@@ -57,15 +64,12 @@ func (n *NetworkManager) GrpcCall(queue string, params interface{}, callback int
 		}
 
 		queue = "message.receive"
-		fmt.Println(n.ChannelMap)
-		fmt.Println("extracted received message:", extracted)
-		n.Set(v,queue)
-		fmt.Println("channel not yet injected:",n.ChannelMap[v][queue])
-		go func(){
-			n.ChannelMap[v][queue] <- extracted
-		}()
-		fmt.Println("channel injected:",<-n.ChannelMap[v][queue])
-		fmt.Println("end of calling")
+		go func(v string, queue string) {
+			fmt.Println("insert into channel:", v)
+
+			n.Push(v, queue, extracted)
+
+		}(v, queue)
 	}
 
 	//run go routine for receive callback
@@ -78,16 +82,23 @@ func (n *NetworkManager) GrpcCall(queue string, params interface{}, callback int
 
 //GrpcConsume would be injected to rpc server
 func (n *NetworkManager) GrpcConsume(processId string, queue string, handler func(a interface{}) error) error {
-
+	if n.ChannelMap[processId][queue] == nil{
+		n.mutex.Lock()
+		defer n.mutex.Unlock()
+		n.ChannelMap[processId] = make(map[string]chan interface{})
+		n.ChannelMap[processId][queue] = make(chan interface{})
+	}
+	fmt.Println("consume from processId:", processId, "queue:", queue, "map:", n.ChannelMap[processId][queue])
 	//start command distributer
-
 	go func() {
-
+		//fmt.Println(n.ChannelMap[processId][queue])
+		//fmt.Println("asdf",<-n.ChannelMap[processId][queue])
 		end := true
 
 		for end {
 			select {
 			case message := <-n.ChannelMap[processId][queue]:
+				fmt.Println("receive message: ", message)
 				handler(message)
 
 			case <-time.After(5 * time.Second):

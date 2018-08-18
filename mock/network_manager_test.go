@@ -21,7 +21,9 @@ import (
 
 	"github.com/it-chain/engine/common/command"
 	"github.com/magiconair/properties/assert"
+	"time"
 )
+
 func TestNewNetworkManager(t *testing.T) {
 }
 
@@ -40,29 +42,72 @@ func TestNetworkManager_GrpcCall(t *testing.T) {
 			RecipientList []string
 			Protocol      string
 		}{RecipientList: []string{"1", "2"}, Protocol: "test"}},
+		"no receiver test": {input: struct {
+			RecipientList []string
+			Protocol      string
+		}{RecipientList: []string{}, Protocol: "test"}},
 	}
 
-	for testName, test := range tests{
+	for testName, test := range tests {
 		networkManager := NewNetworkManager()
 		t.Logf("running test case %s", testName)
 
 		deliverGrpc := &command.DeliverGrpc{
 			RecipientList: test.input.RecipientList,
-			Protocol:test.input.Protocol,
+			Protocol:      test.input.Protocol,
 		}
 		networkManager.GrpcCall("message.deliver", *deliverGrpc, func() {})
 		t.Logf("end of test calling")
-		for _, processId := range test.input.RecipientList{
-			t.Logf("processId:%s is receiving" ,processId)
-			go func(){
-				a:=<-networkManager.ChannelMap[processId]["message.receive"]
+		for _, processId := range test.input.RecipientList {
+			t.Logf("processId:%s is receiving", processId)
+			go func(processId string) {
+				a := <-networkManager.ChannelMap[processId]["message.receive"]
 				assert.Equal(t, a.(command.ReceiveGrpc).Protocol, test.input.Protocol)
-			}()
-
+			}(processId)
 		}
 	}
 }
 
 func TestNetworkManager_GrpcConsume(t *testing.T) {
+	callbackIndex := 1
 
+	tests := map[string]struct {
+		input struct {
+			RecipientList []string
+			ProcessId     string
+			handler       func(a interface{}) error
+		}
+	}{
+		"success": {input: struct {
+			RecipientList []string
+			ProcessId     string
+			handler       func(a interface{}) error
+		}{RecipientList: []string{"1", "2", "3"},
+		ProcessId: "1",
+		handler: func(a interface{}) error {callbackIndex=2; t.Logf("handler!"); return nil }}},
+		//"do not receive": {input: struct {
+		//	RecipientList []string
+		//	ProcessId     string
+		//	handler       func(a interface{}) error
+		//}{RecipientList: []string{"2", "3"},
+		//ProcessId: "1",
+		//handler: func(a interface{}) error {callbackIndex=2; t.Logf("handler!"); return nil }}},
+	}
+
+	for testName, test := range tests {
+		t.Logf("running test case %s", testName)
+
+		networkManager := NewNetworkManager()
+
+		deliverGrpc := &command.DeliverGrpc{
+			RecipientList: test.input.RecipientList,
+		}
+		networkManager.GrpcCall("message.deliver", *deliverGrpc, func() {})
+		t.Logf("end of calling!")
+		networkManager.GrpcConsume(test.input.ProcessId, "message.receive", test.input.handler)
+
+	}
+
+	time.Sleep(10 * time.Second)
+	assert.Equal(t, callbackIndex, 2)
 }
