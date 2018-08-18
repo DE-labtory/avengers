@@ -16,35 +16,43 @@
 
 package mock
 
+type GrpcCall func(processId string, queue string, params interface{}, callback interface{}) error
+
 type Client struct {
 	ProcessId string
-	CallFunc  func(queue string, params interface{}, callback interface{}) error // network manager grpc call
+	CallFunc  GrpcCall // network manager grpc call
 }
 
-func NewClient(callFunc func(queue string, params interface{}, callback interface{}) error) Client {
+func NewClient(processId string, callFunc GrpcCall) Client {
 	client := Client{
+		ProcessId:processId,
 		CallFunc: callFunc,
 	}
 	return client
 }
 
 func (c *Client) Call(queue string, params interface{}, callback interface{}) error {
-	return c.CallFunc(queue, params, callback)
+	return c.CallFunc(c.ProcessId, queue, params, callback)
 }
+
+type ConsumeFunc func(processId string, queue string, handler func(a interface{}) error) error
 
 type Server struct {
 	ProcessId    string
-	RegisterFunc func(processId string, queue string, handler func(a interface{}) error) error // network manager grpc consume
+	ConsumeFunc func(
+		processId string,
+		queue string,
+		handler func(a interface{}) error) error // network manager grpc consume
 }
 
-func NewServer(processId string, registerFunc func(processId string, queue string, handler func(a interface{}) error) error) Server {
+func NewServer(processId string, consumeFunc ConsumeFunc) Server {
 	server := Server{
 		ProcessId:    processId,
-		RegisterFunc: registerFunc,
+		ConsumeFunc: consumeFunc,
 	}
 	return server
 }
 
 func (s Server) Register(queue string, handler func(a interface{}) error) error {
-	return s.RegisterFunc(s.ProcessId, queue, handler)
+	return s.ConsumeFunc(s.ProcessId, queue, handler)
 }
