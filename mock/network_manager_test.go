@@ -16,4 +16,53 @@
 
 package mock
 
+import (
+	"testing"
 
+	"github.com/it-chain/engine/common/command"
+	"github.com/magiconair/properties/assert"
+)
+func TestNewNetworkManager(t *testing.T) {
+}
+
+func TestNetworkManager_AddProcess(t *testing.T) {
+
+}
+
+func TestNetworkManager_GrpcCall(t *testing.T) {
+	tests := map[string]struct {
+		input struct {
+			RecipientList []string
+			Protocol      string
+		}
+	}{
+		"success": {input: struct {
+			RecipientList []string
+			Protocol      string
+		}{RecipientList: []string{"1", "2"}, Protocol: "test"}},
+	}
+
+	for testName, test := range tests{
+		networkManager := NewNetworkManager()
+		t.Logf("running test case %s", testName)
+
+		deliverGrpc := &command.DeliverGrpc{
+			RecipientList: test.input.RecipientList,
+			Protocol:test.input.Protocol,
+		}
+		networkManager.GrpcCall("message.deliver", *deliverGrpc, func() {})
+		t.Logf("end of test calling")
+		for _, processId := range test.input.RecipientList{
+			t.Logf("processId:%s is receiving" ,processId)
+			go func(){
+				a:=<-networkManager.ChannelMap[processId]["message.receive"]
+				assert.Equal(t, a.(command.ReceiveGrpc).Protocol, test.input.Protocol)
+			}()
+
+		}
+	}
+}
+
+func TestNetworkManager_GrpcConsume(t *testing.T) {
+
+}
