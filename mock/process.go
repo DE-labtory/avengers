@@ -36,6 +36,7 @@ func (p *Process) Init(id string) {
 	p.GrpcListen()
 }
 
+//every grpc command handler listens command and deal with it
 func (p *Process) GrpcListen() {
 
 	go func() {
@@ -49,7 +50,7 @@ func (p *Process) GrpcListen() {
 					handler(message.(command.ReceiveGrpc))
 				}
 
-			case <-time.After(3 * time.Second):
+			case <-time.After(5 * time.Second):
 				end = false
 			}
 		}

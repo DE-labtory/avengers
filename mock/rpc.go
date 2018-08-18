@@ -17,8 +17,8 @@
 package mock
 
 type Client struct {
-	PeerId   string
-	CallFunc func(queue string, params interface{}, callback interface{}) error // network manager grpc call
+	ProcessId string
+	CallFunc  func(queue string, params interface{}, callback interface{}) error // network manager grpc call
 }
 
 func NewClient(callFunc func(queue string, params interface{}, callback interface{}) error) Client {
@@ -33,16 +33,18 @@ func (c *Client) Call(queue string, params interface{}, callback interface{}) er
 }
 
 type Server struct {
-	RegisterFunc func(queue string, handler func(a interface{}) error) error // network manager grpc consume
+	ProcessId    string
+	RegisterFunc func(processId string, queue string, handler func(a interface{}) error) error // network manager grpc consume
 }
 
-func NewServer(registerFunc func(queue string, handler func(a interface{}) error) error) Server {
+func NewServer(processId string, registerFunc func(processId string, queue string, handler func(a interface{}) error) error) Server {
 	server := Server{
+		ProcessId:    processId,
 		RegisterFunc: registerFunc,
 	}
 	return server
 }
 
 func (s Server) Register(queue string, handler func(a interface{}) error) error {
-	return s.RegisterFunc(queue, handler)
+	return s.RegisterFunc(s.ProcessId, queue, handler)
 }

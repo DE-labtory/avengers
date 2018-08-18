@@ -17,21 +17,45 @@
 package mock
 
 import (
-	"time"
+	"fmt"
+
+	"sync"
 
 	"github.com/it-chain/engine/common/command"
+	"time"
 )
 
+//network manager builds environment for communication between multiple nodes in network
+
 type NetworkManager struct {
-	ChannelMap    map[string]chan interface{}
-	CallbackQueue map[string]chan interface{}
+	mutex      sync.Mutex
+	ChannelMap map[string]map[string]chan interface{} // channel for receive deliverGrpc command
 }
 
-func (n *NetworkManager) GrpcCall(queue string, params interface{}, callback interface{}) error {
+func NewNetworkManager() NetworkManager {
+
+	return NetworkManager{
+		ChannelMap: make(map[string]map[string]chan interface{}),
+	}
+}
+
+func (n *NetworkManager) Push(processId string, queue string, command interface{}) error {
+	if n.ChannelMap[processId][queue] == nil{
+		n.mutex.Lock()
+		defer n.mutex.Unlock()
+		n.ChannelMap[processId] = make(map[string]chan interface{})
+		n.ChannelMap[processId][queue] = make(chan interface{})
+	}
+	n.ChannelMap[processId][queue]<-command
+	return nil
+}
+
+//Grpc call function would be injected to rpc client
+func (n *NetworkManager) GrpcCall(queue string, params interface{}, callback interface{}) {
 
 	//find receiver process and deliver command through channel
 	for _, v := range params.(command.DeliverGrpc).RecipientList {
-
+		fmt.Println("calling process:", v)
 		//convert grpc deliver message to grpc receive message
 		extracted := command.ReceiveGrpc{
 			Body:         params.(command.DeliverGrpc).Body,
@@ -39,7 +63,13 @@ func (n *NetworkManager) GrpcCall(queue string, params interface{}, callback int
 			ConnectionID: v,
 		}
 
-		n.ChannelMap[v] <- extracted
+		queue = "message.receive"
+		go func(v string, queue string) {
+			fmt.Println("insert into channel:", v)
+
+			n.Push(v, queue, extracted)
+
+		}(v, queue)
 	}
 
 	//run go routine for receive callback
@@ -48,23 +78,30 @@ func (n *NetworkManager) GrpcCall(queue string, params interface{}, callback int
 	//	handleResponse(task.(amqp.Delivery).Body, callback)
 	//}()
 
-	return nil
 }
 
-func (n *NetworkManager) GrpcConsume(queue string, handler func(a interface{}) error) error {
-
+//GrpcConsume would be injected to rpc server
+func (n *NetworkManager) GrpcConsume(processId string, queue string, handler func(a interface{}) error) error {
+	if n.ChannelMap[processId][queue] == nil{
+		n.mutex.Lock()
+		defer n.mutex.Unlock()
+		n.ChannelMap[processId] = make(map[string]chan interface{})
+		n.ChannelMap[processId][queue] = make(chan interface{})
+	}
+	fmt.Println("consume from processId:", processId, "queue:", queue, "map:", n.ChannelMap[processId][queue])
 	//start command distributer
-
 	go func() {
-
+		//fmt.Println(n.ChannelMap[processId][queue])
+		//fmt.Println("asdf",<-n.ChannelMap[processId][queue])
 		end := true
 
 		for end {
 			select {
-			case message := <-n.ChannelMap[queue]:
+			case message := <-n.ChannelMap[processId][queue]:
+				fmt.Println("receive message: ", message)
 				handler(message)
 
-			case <-time.After(2 * time.Second):
+			case <-time.After(5 * time.Second):
 				end = false
 			}
 		}
@@ -75,6 +112,6 @@ func (n *NetworkManager) GrpcConsume(queue string, handler func(a interface{}) e
 
 func (m *NetworkManager) AddProcess(process Process) {
 
-	m.ChannelMap[process.Id] = process.grpcCommandReceiver
+	m.ChannelMap[process.Id]["message.receive"] = process.grpcCommandReceiver
 	process.Init(process.Id)
 }
