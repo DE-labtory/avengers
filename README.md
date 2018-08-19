@@ -2,6 +2,27 @@
 
 블록체인 코어 엔진 개발 시 consenesus 혹은 p2p network 를 구현함에 있어 다중 노드 환경을 다루는 많은 기능에 대한 구현이 필요합니다. Avengers 는 이러한 다중 노드 환경에서 노드 사이의 통신을 고루틴 사이의 채널링을 통해 가상으로 구현하여 다중 노드를 다루는 많은 기능들을 간편하게 테스트 할 수 있게 해줍니다.
 
+## Getting started
+
+```go
+//initialize network manager
+networkManager := mock.NewNetworkManager()
+
+//initialize process
+process := mock.NewProcess()
+
+//generate client and server and inject network manager function
+client := mock.NewClient(processId, networkManager.GrpcCall)
+server := mock.NewServer(processId, networkManager.GrpcConsume)
+
+//register command handlers
+server.Register("message.receive", func(){})
+
+//add process to network manager
+networkManager.AddProcess(process)
+
+```
+
 
 
 ## Logical design

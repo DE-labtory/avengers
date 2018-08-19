@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="074a7b9f-21fd-45f6-aa15-f5a6bf462e5e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/mock/handler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/process_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/total_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/network_manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/network_manager.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/network_manager_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/network_manager_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/process.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/process.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/rpc.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/rpc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/total_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/total_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,15 +14,30 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="process_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mock/process_test.go">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="network_manager.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="41" column="55" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
+            <state relative-caret-position="641">
+              <caret line="103" column="20" lean-forward="true" selection-start-line="103" selection-start-column="20" selection-end-line="103" selection-end-column="20" />
               <folding>
-                <element signature="e#609#675#0" expanded="true" />
+                <element signature="e#796#923#0" />
+                <element signature="n#!!block;n#NewNetworkManager#0" />
+                <element signature="n#!!block;n#Push#0" />
+                <element signature="n#!!block;n#AddProcess#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="660">
+                <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -35,37 +45,8 @@
       <file leaf-file-name="total_test.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/total_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
-              <folding>
-                <element signature="e#604#663#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="network_manager.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="108" column="47" selection-start-line="108" selection-start-column="47" selection-end-line="108" selection-end-column="47" />
-              <folding>
-                <element signature="n#!!doc" />
-                <element signature="e#796#923#0" />
-                <element signature="n#!!block;n#NewNetworkManager#0" />
-                <element signature="e#1058#1081#0" />
-                <element signature="n#!!block;n#Push#0" />
-                <element signature="e#1190#1356#0" />
-                <element signature="e#1421#1473#0" />
-                <element signature="e#1836#1969#0" />
-                <element signature="e#2033#2113#0" />
-                <element signature="e#2129#2166#0" />
-                <element signature="e#2537#2582#0" />
-                <element signature="e#2497#2663#0" />
-                <element signature="e#2708#2753#0" />
-                <element signature="n#!!block;n#AddProcess#0" />
-                <element signature="e#3165#3345#0" />
-              </folding>
+            <state relative-caret-position="554">
+              <caret line="46" column="1" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -111,8 +92,8 @@
         <option value="$PROJECT_DIR$/mock/network_manager_test.go" />
         <option value="$PROJECT_DIR$/mock/process.go" />
         <option value="$PROJECT_DIR$/mock/rpc.go" />
-        <option value="$PROJECT_DIR$/test/total_test.go" />
         <option value="$PROJECT_DIR$/mock/network_manager.go" />
+        <option value="$PROJECT_DIR$/test/total_test.go" />
       </list>
     </option>
   </component>
@@ -134,7 +115,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -160,6 +140,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -296,13 +277,12 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25579977" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25885227" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39589745" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.39589745" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.13333334" />
@@ -314,6 +294,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,6 +304,19 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2376">
+          <caret line="108" column="47" selection-start-line="108" selection-start-column="47" selection-end-line="108" selection-end-column="47" />
+          <folding>
+            <element signature="e#796#923#0" />
+            <element signature="n#!!block;n#NewNetworkManager#0" />
+            <element signature="n#!!block;n#Push#0" />
+            <element signature="n#!!block;n#AddProcess#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mock/mock_api.go" />
     <entry file="file://$PROJECT_DIR$/mock/mock_service.go" />
     <entry file="file://$PROJECT_DIR$/mock/mock_repo.go" />
@@ -338,16 +332,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="396">
-            <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -386,26 +370,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mock/process_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="41" column="55" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
-          <folding>
-            <element signature="e#609#675#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mock/process.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="509">
           <caret line="60" selection-start-line="60" selection-start-column="2" selection-end-line="65" selection-end-column="3" />
-          <folding>
-            <element signature="n#!!doc" />
-            <element signature="e#683#868#0" />
-            <element signature="n#!!block;n#NewProcess#0" />
-            <element signature="e#1284#1335#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -423,37 +391,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mock/process_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="41" column="55" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="108" column="47" selection-start-line="108" selection-start-column="47" selection-end-line="108" selection-end-column="47" />
+        <state relative-caret-position="641">
+          <caret line="103" column="20" lean-forward="true" selection-start-line="103" selection-start-column="20" selection-end-line="103" selection-end-column="20" />
           <folding>
-            <element signature="n#!!doc" />
             <element signature="e#796#923#0" />
             <element signature="n#!!block;n#NewNetworkManager#0" />
-            <element signature="e#1058#1081#0" />
             <element signature="n#!!block;n#Push#0" />
-            <element signature="e#1190#1356#0" />
-            <element signature="e#1421#1473#0" />
-            <element signature="e#1836#1969#0" />
-            <element signature="e#2033#2113#0" />
-            <element signature="e#2129#2166#0" />
-            <element signature="e#2537#2582#0" />
-            <element signature="e#2497#2663#0" />
-            <element signature="e#2708#2753#0" />
             <element signature="n#!!block;n#AddProcess#0" />
-            <element signature="e#3165#3345#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="660">
+            <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/total_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
-          <folding>
-            <element signature="e#604#663#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="554">
+          <caret line="46" column="1" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
         </state>
       </provider>
     </entry>
