@@ -17,8 +17,11 @@ process.Init(processId)
 client := mock.NewClient(processId, networkManager.GrpcCall)
 server := mock.NewServer(processId, networkManager.GrpcConsume)
 
-//register command handlers
-server.Register("message.receive", func(){})
+//register command handling function ex) grpc comand handler's receive func
+server.Register("message.receive", __functionReceivedReceiveGrpc__)
+
+//inject other componenets to use in test case
+process.Register(__any_kind_of_instance__)
 
 //add process to network manager
 networkManager.AddProcess(process)

@@ -4,12 +4,6 @@
     <list default="true" id="074a7b9f-21fd-45f6-aa15-f5a6bf462e5e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/network_manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/network_manager.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/network_manager_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/network_manager_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/process.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/process.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/process_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/process_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/rpc.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/rpc.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/total_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/total_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,26 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="network_manager.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="927">
-              <caret line="95" column="35" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="process.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mock/process.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="70" selection-start-line="70" selection-end-line="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -266,7 +241,7 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26190478" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26190478" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
@@ -274,7 +249,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.26564103" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.13333334" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.13333334" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -393,17 +368,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mock/process.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="63" column="1" lean-forward="true" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="927">
           <caret line="95" column="35" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mock/process.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
         </state>
       </provider>
     </entry>
