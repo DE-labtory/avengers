@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="074a7b9f-21fd-45f6-aa15-f5a6bf462e5e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/mock/handler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/process_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/total_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mock/network_manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/network_manager.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mock/network_manager_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/network_manager_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mock/process.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/process.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/process_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/process_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mock/rpc.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/rpc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/total_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/total_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,52 +20,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="process_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mock/process_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="41" column="55" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
-              <folding>
-                <element signature="e#609#675#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="total_test.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/total_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
-              <folding>
-                <element signature="e#604#663#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="network_manager.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="108" column="47" selection-start-line="108" selection-start-column="47" selection-end-line="108" selection-end-column="47" />
-              <folding>
-                <element signature="n#!!doc" />
-                <element signature="e#796#923#0" />
-                <element signature="n#!!block;n#NewNetworkManager#0" />
-                <element signature="e#1058#1081#0" />
-                <element signature="n#!!block;n#Push#0" />
-                <element signature="e#1190#1356#0" />
-                <element signature="e#1421#1473#0" />
-                <element signature="e#1836#1969#0" />
-                <element signature="e#2033#2113#0" />
-                <element signature="e#2129#2166#0" />
-                <element signature="e#2537#2582#0" />
-                <element signature="e#2497#2663#0" />
-                <element signature="e#2708#2753#0" />
-                <element signature="n#!!block;n#AddProcess#0" />
-                <element signature="e#3165#3345#0" />
-              </folding>
+            <state relative-caret-position="927">
+              <caret line="95" column="35" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="process.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mock/process.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="620">
+              <caret line="70" selection-start-line="70" selection-end-line="70" />
             </state>
           </provider>
         </entry>
@@ -84,11 +52,15 @@
       <find>grpcCommandHandlers</find>
       <find>grpcCommandReceiver</find>
       <find>message.receive</find>
+      <find>receive proc</find>
     </findStrings>
     <replaceStrings>
       <replace>GrpcCommandHandlers</replace>
       <replace>GrpcCommandReceiver</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.10.3/libexec" />
   <component name="Git.Settings">
@@ -107,12 +79,14 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/mock/rpc_test.go" />
         <option value="$PROJECT_DIR$/mock/handler.go" />
-        <option value="$PROJECT_DIR$/mock/process_test.go" />
-        <option value="$PROJECT_DIR$/mock/network_manager_test.go" />
-        <option value="$PROJECT_DIR$/mock/process.go" />
-        <option value="$PROJECT_DIR$/mock/rpc.go" />
         <option value="$PROJECT_DIR$/test/total_test.go" />
+        <option value="$PROJECT_DIR$/mock/process_test.go" />
+        <option value="$PROJECT_DIR$/mock/rpc.go" />
+        <option value="$PROJECT_DIR$/api/api.go" />
+        <option value="$PROJECT_DIR$/avengers.go" />
+        <option value="$PROJECT_DIR$/mock/network_manager_test.go" />
         <option value="$PROJECT_DIR$/mock/network_manager.go" />
+        <option value="$PROJECT_DIR$/mock/process.go" />
       </list>
     </option>
   </component>
@@ -134,7 +108,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -149,17 +122,13 @@
             </path>
             <path>
               <item name="avengers" type="b2602c69:ProjectViewProjectNode" />
-              <item name="avengers" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="avengers" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -191,16 +160,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestTotal in github.com/it-chain/avengers/test">
-    <configuration name="go build network_manager.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="avengers" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <go_parameters value="-i" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/mock/network_manager.go" />
-      <package value="github.com/it-chain/avengers" />
-      <directory value="$PROJECT_DIR$/" />
-    </configuration>
+  <component name="RunManager" selected="Go Test.TestNetworkManager_GrpcConsume in github.com/it-chain/avengers/mock">
     <configuration name="go build rpc.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="avengers" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -243,45 +203,34 @@
       <filePath value="$PROJECT_DIR$/" />
       <pattern value="^TestTotal$" />
     </configuration>
+    <configuration name="go test github.com/it-chain/avengers/mock" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="avengers" />
+      <working_directory value="$PROJECT_DIR$/mock" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/it-chain/avengers/mock" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+    </configuration>
     <list>
       <item itemvalue="Go Test.TestNetworkManager_GrpcConsume in github.com/it-chain/avengers/mock" />
-      <item itemvalue="Go Build.go build network_manager.go" />
       <item itemvalue="Go Test.TestProcess_RegisterHandler in github.com/it-chain/avengers/mock" />
       <item itemvalue="Go Test.TestTotal in github.com/it-chain/avengers/test" />
       <item itemvalue="Go Build.go build rpc.go" />
+      <item itemvalue="Go Test.go test github.com/it-chain/avengers/mock" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestNetworkManager_GrpcConsume in github.com/it-chain/avengers/mock" />
+        <item itemvalue="Go Test.go test github.com/it-chain/avengers/mock" />
         <item itemvalue="Go Test.TestTotal in github.com/it-chain/avengers/test" />
         <item itemvalue="Go Build.go build rpc.go" />
         <item itemvalue="Go Test.TestProcess_RegisterHandler in github.com/it-chain/avengers/mock" />
-        <item itemvalue="Go Test.TestNetworkManager_GrpcConsume in github.com/it-chain/avengers/mock" />
-        <item itemvalue="Go Build.go build network_manager.go" />
       </list>
     </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="TestTotal_in_github_com_it-chain_avengers_test - 2018.08.18 at 18h 56m 08s.xml">
-      <configuration name="TestTotal in github.com/it-chain/avengers/test" configurationId="GoTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestTotal_in_github_com_it-chain_avengers_test - 2018.08.18 at 18h 57m 55s.xml">
-      <configuration name="TestTotal in github.com/it-chain/avengers/test" configurationId="GoTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestTotal_in_github_com_it-chain_avengers_test - 2018.08.18 at 19h 00m 35s.xml">
-      <configuration name="TestTotal in github.com/it-chain/avengers/test" configurationId="GoTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestTotal_in_github_com_it-chain_avengers_test - 2018.08.18 at 19h 02m 17s.xml">
-      <configuration name="TestTotal in github.com/it-chain/avengers/test" configurationId="GoTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestTotal_in_github_com_it-chain_avengers_test - 2018.08.18 at 19h 02m 58s.xml">
-      <configuration name="TestTotal in github.com/it-chain/avengers/test" configurationId="GoTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestTotal_in_github_com_it-chain_avengers_test - 2018.08.18 at 19h 13m 04s.xml">
-      <configuration name="TestTotal in github.com/it-chain/avengers/test" configurationId="GoTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestTotal_in_github_com_it-chain_avengers_test - 2018.08.18 at 19h 13m 42s.xml">
-      <configuration name="TestTotal in github.com/it-chain/avengers/test" configurationId="GoTestRunConfiguration" />
-    </history-entry>
     <history-entry file="TestTotal_in_github_com_it-chain_avengers_test - 2018.08.18 at 19h 14m 25s.xml">
       <configuration name="TestTotal in github.com/it-chain/avengers/test" configurationId="GoTestRunConfiguration" />
     </history-entry>
@@ -291,29 +240,50 @@
     <history-entry file="TestTotal_in_github_com_it-chain_avengers_test - 2018.08.18 at 19h 15m 24s.xml">
       <configuration name="TestTotal in github.com/it-chain/avengers/test" configurationId="GoTestRunConfiguration" />
     </history-entry>
+    <history-entry file="go_test_github_com_it-chain_avengers_mock - 2018.08.19 at 12h 09m 05s.xml">
+      <configuration name="go test github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestNetworkManager_GrpcConsume_in_github_com_it-chain_avengers_mock - 2018.08.19 at 13h 00m 04s.xml">
+      <configuration name="TestNetworkManager_GrpcConsume in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestNetworkManager_GrpcConsume_in_github_com_it-chain_avengers_mock - 2018.08.19 at 13h 00m 57s.xml">
+      <configuration name="TestNetworkManager_GrpcConsume in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestNetworkManager_GrpcConsume_in_github_com_it-chain_avengers_mock - 2018.08.19 at 13h 05m 46s.xml">
+      <configuration name="TestNetworkManager_GrpcConsume in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestNetworkManager_GrpcConsume_in_github_com_it-chain_avengers_mock - 2018.08.19 at 13h 06m 05s.xml">
+      <configuration name="TestNetworkManager_GrpcConsume in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestNetworkManager_GrpcConsume_in_github_com_it-chain_avengers_mock - 2018.08.19 at 13h 09m 54s.xml">
+      <configuration name="TestNetworkManager_GrpcConsume in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestNetworkManager_GrpcConsume_in_github_com_it-chain_avengers_mock - 2018.08.19 at 13h 59m 33s.xml">
+      <configuration name="TestNetworkManager_GrpcConsume in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25579977" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26190478" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39589745" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.26564103" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.13333334" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32923076" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,6 +293,13 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2376">
+          <caret line="108" column="47" selection-start-line="108" selection-start-column="47" selection-end-line="108" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mock/mock_api.go" />
     <entry file="file://$PROJECT_DIR$/mock/mock_service.go" />
     <entry file="file://$PROJECT_DIR$/mock/mock_repo.go" />
@@ -331,23 +308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
           <caret line="182" column="5" selection-start-line="182" selection-start-column="5" selection-end-line="182" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mock/rpc_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="396">
-            <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -372,13 +332,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../engine/common/command/command.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="660">
+            <caret line="41" selection-start-line="41" selection-end-line="41" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/total_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mock/rpc_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/api.go" />
+    <entry file="file://$PROJECT_DIR$/avengers.go" />
     <entry file="file://$PROJECT_DIR$/mock/handler.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -388,72 +367,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mock/process_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="41" column="55" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
-          <folding>
-            <element signature="e#609#675#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="506">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mock/process.go">
+    <entry file="file://$PROJECT_DIR$/../engine/common/command/command.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="60" selection-start-line="60" selection-start-column="2" selection-end-line="65" selection-end-column="3" />
-          <folding>
-            <element signature="n#!!doc" />
-            <element signature="e#683#868#0" />
-            <element signature="n#!!block;n#NewProcess#0" />
-            <element signature="e#1284#1335#0" />
-          </folding>
+        <state relative-caret-position="309">
+          <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mock/network_manager_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="-321">
+          <caret line="74" column="32" lean-forward="true" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mock/rpc.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+        <state relative-caret-position="550">
+          <caret line="58" column="43" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="108" column="47" selection-start-line="108" selection-start-column="47" selection-end-line="108" selection-end-column="47" />
-          <folding>
-            <element signature="n#!!doc" />
-            <element signature="e#796#923#0" />
-            <element signature="n#!!block;n#NewNetworkManager#0" />
-            <element signature="e#1058#1081#0" />
-            <element signature="n#!!block;n#Push#0" />
-            <element signature="e#1190#1356#0" />
-            <element signature="e#1421#1473#0" />
-            <element signature="e#1836#1969#0" />
-            <element signature="e#2033#2113#0" />
-            <element signature="e#2129#2166#0" />
-            <element signature="e#2537#2582#0" />
-            <element signature="e#2497#2663#0" />
-            <element signature="e#2708#2753#0" />
-            <element signature="n#!!block;n#AddProcess#0" />
-            <element signature="e#3165#3345#0" />
-          </folding>
+        <state relative-caret-position="927">
+          <caret line="95" column="35" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/total_test.go">
+    <entry file="file://$PROJECT_DIR$/mock/process.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
-          <folding>
-            <element signature="e#604#663#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="620">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
         </state>
       </provider>
     </entry>
