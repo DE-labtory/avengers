@@ -18,30 +18,8 @@ package mock_test
 
 import (
 	"testing"
-	"github.com/it-chain/avengers/mock"
-	"github.com/it-chain/engine/common/command"
-	"github.com/magiconair/properties/assert"
 )
 
 func TestProcess_GrpcListen(t *testing.T) {
-
-}
-
-func TestProcess_RegisterHandler(t *testing.T) {
-	process:= mock.NewProcess()
-	process.Init("1")
-	handler := func(command command.ReceiveGrpc) error{
-		return nil
-	}
-	handler2 := func(command command.ReceiveGrpc) error{
-		return nil
-	}
-	process.RegisterHandler(handler)
-	process.RegisterHandler(handler2)
-
-	assert.Equal(t, len(process.GrpcCommandHandlers), 2)
-}
-
-func TestProcess_Init(t *testing.T) {
 
 }

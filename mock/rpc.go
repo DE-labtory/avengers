@@ -16,6 +16,8 @@
 
 package mock
 
+import "github.com/it-chain/engine/common/command"
+
 type GrpcCall func(processId string, queue string, params interface{}, callback interface{}) error
 
 type Client struct {
@@ -35,14 +37,14 @@ func (c *Client) Call(queue string, params interface{}, callback interface{}) er
 	return c.CallFunc(c.ProcessId, queue, params, callback)
 }
 
-type ConsumeFunc func(processId string, queue string, handler func(a interface{}) error) error
+type ConsumeFunc func(processId string, queue string, handler func(command command.ReceiveGrpc) error) error
 
 type Server struct {
 	ProcessId    string
 	ConsumeFunc func(
 		processId string,
 		queue string,
-		handler func(a interface{}) error) error // network manager grpc consume
+		handler func(command command.ReceiveGrpc) error) error // network manager grpc consume
 }
 
 func NewServer(processId string, consumeFunc ConsumeFunc) Server {
@@ -53,6 +55,6 @@ func NewServer(processId string, consumeFunc ConsumeFunc) Server {
 	return server
 }
 
-func (s Server) Register(queue string, handler func(a interface{}) error) error {
+func (s Server) Register(queue string, handler func(command command.ReceiveGrpc) error) error {
 	return s.ConsumeFunc(s.ProcessId, queue, handler)
 }

@@ -19,13 +19,17 @@ package mock
 import (
 	"time"
 
+	"reflect"
 	"github.com/it-chain/engine/common/command"
+	"sync"
 )
 
 type Process struct {
+	mutex sync.Mutex
 	Id                  string
 	GrpcCommandHandlers []func(command command.ReceiveGrpc) error
-	GrpcCommandReceiver chan interface{} //should be register to network's channel map
+	GrpcCommandReceiver chan command.ReceiveGrpc //should be register to network's channel map
+	Services            map[string]*interface{}   // register service or api for testing which has injected mock client
 }
 
 func NewProcess() Process {
@@ -33,6 +37,7 @@ func NewProcess() Process {
 }
 
 func (p *Process) Init(id string) {
+	p.Services = make(map[string]*interface{})
 	p.Id = id
 	p.GrpcListen()
 }
@@ -48,7 +53,7 @@ func (p *Process) GrpcListen() {
 			select {
 			case message := <-p.GrpcCommandReceiver:
 				for _, handler := range p.GrpcCommandHandlers {
-					handler(message.(command.ReceiveGrpc))
+					handler(message)
 				}
 
 			case <-time.After(5 * time.Second):
@@ -56,6 +61,13 @@ func (p *Process) GrpcListen() {
 			}
 		}
 	}()
+}
+
+func (p *Process) Register(service interface{}) {
+	p.mutex.Lock()
+	defer p.mutex.Unlock()
+
+	p.Services[reflect.TypeOf(service).Name()] = &service
 }
 
 //func (p *Process) RegisterHandler(handler func(command command.ReceiveGrpc) error) error {

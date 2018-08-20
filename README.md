@@ -8,8 +8,10 @@
 //initialize network manager
 networkManager := mock.NewNetworkManager()
 
-//initialize process
+//make process
 process := mock.NewProcess()
+//initialize process
+process.Init(processId)
 
 //generate client and server and inject network manager function
 client := mock.NewClient(processId, networkManager.GrpcCall)

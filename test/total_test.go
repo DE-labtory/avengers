@@ -45,7 +45,7 @@ func TestTotal(t *testing.T) {
 
 		for _, processId := range test.Input.ProcessList {
 			process := mock.NewProcess()
-			//process.Init(processId)
+			process.Init(processId)
 
 			client := mock.NewClient(processId, networkManager.GrpcCall)
 			server := mock.NewServer(processId, networkManager.GrpcConsume)
@@ -57,7 +57,6 @@ func TestTotal(t *testing.T) {
 
 			clientList = append(clientList, client)
 			serverList = append(serverList, server)
-
 
 			networkManager.AddProcess(process)
 		}
