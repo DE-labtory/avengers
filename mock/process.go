@@ -29,7 +29,7 @@ type Process struct {
 	Id                  string
 	GrpcCommandHandlers []func(command command.ReceiveGrpc) error
 	GrpcCommandReceiver chan command.ReceiveGrpc //should be register to network's channel map
-	Services            map[string]*interface{}   // register service or api for testing which has injected mock client
+	Services            map[string]interface{}   // register service or api for testing which has injected mock client
 }
 
 func NewProcess() Process {
@@ -37,7 +37,7 @@ func NewProcess() Process {
 }
 
 func (p *Process) Init(id string) {
-	p.Services = make(map[string]*interface{})
+	p.Services = make(map[string]interface{})
 	p.Id = id
 	p.GrpcListen()
 }
@@ -67,7 +67,7 @@ func (p *Process) Register(service interface{}) {
 	p.mutex.Lock()
 	defer p.mutex.Unlock()
 
-	p.Services[reflect.TypeOf(service).Name()] = &service
+	p.Services[reflect.ValueOf(service).Elem().Type().Name()] = service
 }
 
 //func (p *Process) RegisterHandler(handler func(command command.ReceiveGrpc) error) error {
