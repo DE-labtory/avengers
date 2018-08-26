@@ -110,7 +110,7 @@ func (n *NetworkManager) GrpcConsume(processId string, queue string, handler fun
 				fmt.Println("receive message from : ",processId," message:", message)
 				handler(message)
 
-			case <-time.After(4 * time.Second):
+			case <-time.After(6 * time.Second):
 				fmt.Println("failed to consume, timed out!")
 				end = false
 			}
