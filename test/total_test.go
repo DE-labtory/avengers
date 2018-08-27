@@ -50,8 +50,7 @@ func TestTotal(t *testing.T) {
 			client := mock.NewClient(processId, networkManager.GrpcCall)
 			server := mock.NewServer(processId, networkManager.GrpcConsume)
 
-			server.Register("message.receive", func(a interface{}) error {
-				t.Logf("consumed process: %s", process.Id)
+			server.Register("message.receive", func(a command.ReceiveGrpc) error {
 				return nil
 			})
 
