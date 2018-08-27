@@ -17,8 +17,6 @@
 package mock
 
 import (
-	"time"
-
 	"reflect"
 	"github.com/it-chain/engine/common/command"
 	"sync"
@@ -38,29 +36,8 @@ func NewProcess() Process {
 
 func (p *Process) Init(id string) {
 	p.Services = make(map[string]interface{})
+	p.GrpcCommandReceiver = make(chan command.ReceiveGrpc)
 	p.Id = id
-	p.GrpcListen()
-}
-
-//every grpc command handler listens command and deal with it
-func (p *Process) GrpcListen() {
-
-	go func() {
-
-		end := true
-
-		for end {
-			select {
-			case message := <-p.GrpcCommandReceiver:
-				for _, handler := range p.GrpcCommandHandlers {
-					handler(message)
-				}
-
-			case <-time.After(5 * time.Second):
-				end = false
-			}
-		}
-	}()
 }
 
 func (p *Process) Register(service interface{}) {

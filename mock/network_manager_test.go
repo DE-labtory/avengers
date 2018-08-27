@@ -58,9 +58,12 @@ func TestNetworkManager_GrpcCall(t *testing.T) {
 			Protocol:      test.input.Protocol,
 		}
 		networkManager.GrpcCall("1","message.deliver", *deliverGrpc, func() {})
+
 		t.Logf("end of test calling")
+
 		for _, processId := range test.input.RecipientList {
 			t.Logf("processId:%s is receiving", processId)
+
 			go func(processId string) {
 				a := <-networkManager.ChannelMap[processId]["message.receive"]
 				assert.Equal(t, a.Protocol, test.input.Protocol)
@@ -86,13 +89,6 @@ func TestNetworkManager_GrpcConsume(t *testing.T) {
 		}{RecipientList: []string{"1", "2", "3"},
 		ProcessId: "1",
 		handler: func(c command.ReceiveGrpc) error {callbackIndex=2; t.Logf("handler!"); return nil }}},
-		//"do not receive": {input: struct {
-		//	RecipientList []string
-		//	ProcessId     string
-		//	handler       func(c command.ReceiveGrpc) error
-		//}{RecipientList: []string{"2", "3"},
-		//ProcessId: "1",
-		//handler: func(c command.ReceiveGrpc) error {callbackIndex=2; t.Logf("handler!"); return nil }}},
 	}
 
 	for testName, test := range tests {
@@ -103,13 +99,19 @@ func TestNetworkManager_GrpcConsume(t *testing.T) {
 		deliverGrpc := &command.DeliverGrpc{
 			RecipientList: test.input.RecipientList,
 		}
+		networkManager.ChannelMap[test.input.ProcessId] = make(map[string]chan command.ReceiveGrpc)
+		networkManager.ChannelMap[test.input.ProcessId]["message.receive"] = make(chan command.ReceiveGrpc)
+
 		networkManager.GrpcConsume(test.input.ProcessId, "message.receive", test.input.handler)
 
-		networkManager.GrpcCall("1","message.deliver", *deliverGrpc, func() {})
+		networkManager.GrpcCall("1","message.deliver", *deliverGrpc, func() {
+			callbackIndex++
+		})
+
 		t.Logf("end of calling!")
 
 	}
 
-	time.Sleep(4 * time.Second)
+	time.Sleep(5 * time.Second)
 	assert.Equal(t, callbackIndex, 2)
 }
