@@ -23,6 +23,7 @@ import (
 
 	"github.com/it-chain/engine/common/command"
 	"github.com/it-chain/engine/common/logger"
+	"reflect"
 )
 
 //network manager builds environment for communication between multiple nodes in network
@@ -30,12 +31,16 @@ import (
 type NetworkManager struct {
 	mutex      sync.Mutex
 	ChannelMap map[string]map[string]chan command.ReceiveGrpc // channel for receive deliverGrpc command
+
+	ProcessMap map[string]*Process
 }
 
-func NewNetworkManager() NetworkManager {
+func NewNetworkManager() *NetworkManager {
 
-	return NetworkManager{
+	return &NetworkManager{
 		ChannelMap: make(map[string]map[string]chan command.ReceiveGrpc),
+		ProcessMap: make(map[string]*Process),
+		mutex:      sync.Mutex{},
 	}
 }
 
@@ -46,7 +51,7 @@ func (n *NetworkManager) Push(processId string, queue string, c command.ReceiveG
 	defer n.mutex.Unlock()
 
 	logger.Infof(nil, "push to channel: %s", processId)
-	n.ChannelMap[processId][queue]<-c
+	n.ChannelMap[processId][queue] <- c
 
 	return nil
 }
@@ -75,6 +80,7 @@ func (n *NetworkManager) GrpcCall(processId string, queue string, params interfa
 	return nil
 }
 
+// Will Be DEPRECATED!
 //GrpcConsume would be injected to rpc server
 //processId => receiver
 func (n *NetworkManager) GrpcConsume(processId string, queue string, handler func(command command.ReceiveGrpc) error) error {
@@ -87,11 +93,11 @@ func (n *NetworkManager) GrpcConsume(processId string, queue string, handler fun
 		for end {
 			select {
 			case message := <-n.ChannelMap[processId][queue]:
-				logger.Infof(nil,"receive message from : %s message: %v",processId, message)
+				logger.Infof(nil, "receive message from : %s message: %v", processId, message)
 				handler(message)
 
 			case <-time.After(4 * time.Second):
-				logger.Info(nil,"failed to consume, timed out!")
+				logger.Info(nil, "failed to consume, timed out!")
 				end = false
 			}
 		}
@@ -100,11 +106,51 @@ func (n *NetworkManager) GrpcConsume(processId string, queue string, handler fun
 	return nil
 }
 
-func (n *NetworkManager) AddProcess(process Process) {
+// test success
+func (n *NetworkManager) Publish(from string, topic string, event interface{}) error {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 
-	n.ChannelMap[process.Id] = make(map[string]chan command.ReceiveGrpc)
+	if reflect.ValueOf(event).Type().Name() == "DeliverGrpc"{
+		for _, id := range event.(command.DeliverGrpc).RecipientList {
+			logger.Infof(nil, "publish to: %s", id)
 
-	n.ChannelMap[process.Id]["message.receive"] = process.GrpcCommandReceiver
+			go func(id string) {
+				n.ProcessMap[id].GrpcCommandReceiver <- command.ReceiveGrpc{
+					MessageId:    event.(command.DeliverGrpc).MessageId,
+					Body:         event.(command.DeliverGrpc).Body,
+					ConnectionID: from,
+					Protocol:     event.(command.DeliverGrpc).Protocol,
+				}
+			}(id)
+
+		}
+	}
+
+	return nil
+}
+
+func (n *NetworkManager) Start() {
+	for id, process := range n.ProcessMap {
+		go func(id string, process *Process) {
+			logger.Infof(nil, "process %s is running", process.Id)
+			logger.Infof(nil, "channel %s is %o", process.Id, process.GrpcCommandReceiver)
+			select {
+			case message := <-process.GrpcCommandReceiver:
+				for _, handler := range process.GrpcCommandHandlers {
+					handler(message)
+				}
+
+			case <-time.After(4 * time.Second):
+				logger.Info(nil, "failed to consume, timed out!")
+			}
+		}(id, process)
+	}
+}
+
+func (n *NetworkManager) AddProcess(process *Process) {
+	n.mutex.Lock()
+	defer n.mutex.Unlock()
+
+	n.ProcessMap[process.Id] = process
 }

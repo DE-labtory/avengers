@@ -18,8 +18,51 @@ package mock_test
 
 import (
 	"testing"
+
+	"github.com/it-chain/avengers/mock"
+	"github.com/it-chain/engine/common/command"
+	"github.com/magiconair/properties/assert"
 )
 
-func TestProcess_GrpcListen(t *testing.T) {
+func TestNewProcess(t *testing.T) {
+	//when
+	process := mock.NewProcess("1")
 
+	//	then
+	assert.Equal(t, process.Id, "1")
+
+	//when
+	process2 := mock.NewProcess("2")
+
+	//	then
+	assert.Equal(t, process2.Id, "2")
+
+}
+
+func TestProcess_Register(t *testing.T) {
+
+	process := mock.NewProcess("1")
+
+	test := &struct {
+		Id string
+	}{Id: "1"}
+
+	process.Register(test)
+
+	assert.Equal(t, process.Services, map[string]interface{}{"": test})
+}
+
+func TestProcess_RegisterHandler(t *testing.T) {
+
+	process := mock.NewProcess("1")
+
+	c := command.ReceiveGrpc{
+		MessageId: "1",
+	}
+
+	process.RegisterHandler(func(command command.ReceiveGrpc) error {
+		return nil
+	})
+
+	assert.Equal(t, process.GrpcCommandHandlers[0](c), nil)
 }

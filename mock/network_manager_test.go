@@ -19,10 +19,13 @@ package mock_test
 import (
 	"testing"
 
+	"time"
+
+	"sync"
+
+	"github.com/it-chain/avengers/mock"
 	"github.com/it-chain/engine/common/command"
 	"github.com/magiconair/properties/assert"
-	"time"
-	"github.com/it-chain/avengers/mock"
 )
 
 func TestNewNetworkManager(t *testing.T) {
@@ -57,7 +60,7 @@ func TestNetworkManager_GrpcCall(t *testing.T) {
 			RecipientList: test.input.RecipientList,
 			Protocol:      test.input.Protocol,
 		}
-		networkManager.GrpcCall("1","message.deliver", *deliverGrpc, func() {})
+		networkManager.GrpcCall("1", "message.deliver", *deliverGrpc, func() {})
 
 		t.Logf("end of test calling")
 
@@ -87,8 +90,8 @@ func TestNetworkManager_GrpcConsume(t *testing.T) {
 			ProcessId     string
 			handler       func(c command.ReceiveGrpc) error
 		}{RecipientList: []string{"1", "2", "3"},
-		ProcessId: "1",
-		handler: func(c command.ReceiveGrpc) error {callbackIndex=2; t.Logf("handler!"); return nil }}},
+			ProcessId: "1",
+			handler:   func(c command.ReceiveGrpc) error { callbackIndex = 2; t.Logf("handler!"); return nil }}},
 	}
 
 	for testName, test := range tests {
@@ -104,7 +107,7 @@ func TestNetworkManager_GrpcConsume(t *testing.T) {
 
 		networkManager.GrpcConsume(test.input.ProcessId, "message.receive", test.input.handler)
 
-		networkManager.GrpcCall("1","message.deliver", *deliverGrpc, func() {
+		networkManager.GrpcCall("1", "message.deliver", *deliverGrpc, func() {
 			callbackIndex++
 		})
 
@@ -114,4 +117,89 @@ func TestNetworkManager_GrpcConsume(t *testing.T) {
 
 	time.Sleep(5 * time.Second)
 	assert.Equal(t, callbackIndex, 2)
+}
+
+func TestNetworkManager_Publish(t *testing.T) {
+	mem := ClosureMemory()
+	wg := sync.WaitGroup{}
+	wg.Add(2)
+	networkManager := SetNetworkManager(mem)
+
+	event := command.DeliverGrpc{
+		MessageId:     "1",
+		RecipientList: []string{"2", "3"},
+	}
+
+	go func() {
+		m2 := <-networkManager.ProcessMap["2"].GrpcCommandReceiver
+		assert.Equal(t, m2.MessageId, "1")
+		wg.Done()
+	}()
+
+	go func() {
+		m3 := <-networkManager.ProcessMap["3"].GrpcCommandReceiver
+		assert.Equal(t, m3.MessageId, "1")
+		wg.Done()
+	}()
+
+	networkManager.Publish("1", "deliver.message", event)
+
+	wg.Wait()
+}
+
+func TestNetworkManager_Start(t *testing.T) {
+	mem := ClosureMemory()
+	net := SetNetworkManager(mem)
+
+	net.Start()
+
+	command := command.DeliverGrpc{
+		MessageId:     "123",
+		RecipientList: []string{"2", "3"},
+	}
+
+	net.Publish("1", "message.deliver", command)
+
+	time.Sleep(2 * time.Second)
+
+	assert.Equal(t, mem(), 3)
+}
+
+func SetNetworkManager(closerMemory func() int) *mock.NetworkManager {
+	networkManager := mock.NewNetworkManager()
+
+	process1 := mock.NewProcess("1")
+	handler1 := func(command command.ReceiveGrpc) error {
+		return nil
+	}
+	process1.RegisterHandler(handler1)
+
+	process2 := mock.NewProcess("2")
+	handler2 := func(command command.ReceiveGrpc) error {
+		closerMemory()
+		return nil
+	}
+	process2.RegisterHandler(handler2)
+
+	process3 := mock.NewProcess("3")
+	handler3 := func(command command.ReceiveGrpc) error {
+		closerMemory()
+		return nil
+	}
+	process3.RegisterHandler(handler3)
+
+	networkManager.AddProcess(process1)
+	networkManager.AddProcess(process2)
+	networkManager.AddProcess(process3)
+
+	return networkManager
+}
+
+func ClosureMemory() func() int {
+	i := 0
+
+	return func() int {
+		i++
+		return i
+	}
 }

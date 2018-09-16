@@ -18,28 +18,33 @@ package mock
 
 import (
 	"reflect"
-	"github.com/it-chain/engine/common/command"
 	"sync"
+
+	"github.com/it-chain/engine/common/command"
 )
 
 type Process struct {
 	mutex sync.Mutex
-	Id                  string
+	Id    string
+
 	GrpcCommandHandlers []func(command command.ReceiveGrpc) error
 	GrpcCommandReceiver chan command.ReceiveGrpc //should be register to network's channel map
 	Services            map[string]interface{}   // register service or api for testing which has injected mock client
 }
 
-func NewProcess() Process {
-	return Process{}
+func NewProcess(processId string) *Process {
+	return &Process{
+		Id:                  processId,
+		Services:            make(map[string]interface{}),
+		GrpcCommandReceiver: make(chan command.ReceiveGrpc),
+		GrpcCommandHandlers: make([]func(command command.ReceiveGrpc) error, 0),
+	}
 }
 
-func (p *Process) Init(id string) {
-	p.Services = make(map[string]interface{})
-	p.GrpcCommandReceiver = make(chan command.ReceiveGrpc)
-	p.Id = id
-}
-
+// 테스트 과정에서 사용하기 위한 다양한 서비스 혹은 api 들을 등록한다.
+// 이를 통해 특정 서비스 혹은 api를 사용함에 있어 어느 프로세스에 종속된 것인지를 직관적으로 알 수 있도록 한다.
+// register all kinds of services or apis to use in test process
+// so we can intuitively know processes we are using are belongs to the process
 func (p *Process) Register(service interface{}) {
 	p.mutex.Lock()
 	defer p.mutex.Unlock()
@@ -47,9 +52,10 @@ func (p *Process) Register(service interface{}) {
 	p.Services[reflect.ValueOf(service).Elem().Type().Name()] = service
 }
 
-//func (p *Process) RegisterHandler(handler func(command command.ReceiveGrpc) error) error {
-//
-//	p.GrpcCommandHandlers = append(p.GrpcCommandHandlers, handler)
-//
-//	return nil
-//}
+// register handlers to be started when network manager start to work
+func (p *Process) RegisterHandler(handler func(command command.ReceiveGrpc) error) error {
+
+	p.GrpcCommandHandlers = append(p.GrpcCommandHandlers, handler)
+
+	return nil
+}

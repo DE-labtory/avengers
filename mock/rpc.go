@@ -27,8 +27,8 @@ type Client struct {
 
 func NewClient(processId string, callFunc GrpcCall) Client {
 	client := Client{
-		ProcessId:processId,
-		CallFunc: callFunc,
+		ProcessId: processId,
+		CallFunc:  callFunc,
 	}
 	return client
 }
@@ -40,7 +40,7 @@ func (c *Client) Call(queue string, params interface{}, callback interface{}) er
 type ConsumeFunc func(processId string, queue string, handler func(command command.ReceiveGrpc) error) error
 
 type Server struct {
-	ProcessId    string
+	ProcessId   string
 	ConsumeFunc func(
 		processId string,
 		queue string,
@@ -49,7 +49,7 @@ type Server struct {
 
 func NewServer(processId string, consumeFunc ConsumeFunc) Server {
 	server := Server{
-		ProcessId:    processId,
+		ProcessId:   processId,
 		ConsumeFunc: consumeFunc,
 	}
 	return server
