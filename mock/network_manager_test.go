@@ -159,10 +159,11 @@ func TestNetworkManager_Start(t *testing.T) {
 	}
 
 	net.Publish("1", "message.deliver", command)
+	net.Publish("1", "message.deliver", command)
 
 	time.Sleep(2 * time.Second)
 
-	assert.Equal(t, mem(), 3)
+	assert.Equal(t, mem(), 5)
 }
 
 func SetNetworkManager(closerMemory func() int) *mock.NetworkManager {

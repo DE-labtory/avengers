@@ -134,15 +134,19 @@ func (n *NetworkManager) Start() {
 	for id, process := range n.ProcessMap {
 		go func(id string, process *Process) {
 			logger.Infof(nil, "process %s is running", process.Id)
-			logger.Infof(nil, "channel %s is %o", process.Id, process.GrpcCommandReceiver)
-			select {
-			case message := <-process.GrpcCommandReceiver:
-				for _, handler := range process.GrpcCommandHandlers {
-					handler(message)
-				}
+			end := true
+			for end {
+				select {
+				case message := <-process.GrpcCommandReceiver:
+					logger.Infof(nil, "receive message from : %s message: %v", id, message)
+					for _, handler := range process.GrpcCommandHandlers {
+						handler(message)
+					}
 
-			case <-time.After(4 * time.Second):
-				logger.Info(nil, "failed to consume, timed out!")
+				case <-time.After(4 * time.Second):
+					logger.Info(nil, "failed to consume, timed out!")
+					end = false
+				}
 			}
 		}(id, process)
 	}
