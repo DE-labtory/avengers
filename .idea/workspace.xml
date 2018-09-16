@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="074a7b9f-21fd-45f6-aa15-f5a6bf462e5e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/mock/event_service_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/event_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/event_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/network_manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/network_manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/network_manager_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/network_manager_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,7 +14,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="event_service.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="event_service.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mock/event_service.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="418">
@@ -30,8 +29,8 @@
       <file leaf-file-name="event_service_test.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mock/event_service_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+            <state relative-caret-position="95">
+              <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
               <folding>
                 <element signature="e#609#667#0" expanded="true" />
               </folding>
@@ -39,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="network_manager_test.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="network_manager_test.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mock/network_manager_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="144" column="25" selection-start-line="144" selection-start-column="25" selection-end-line="144" selection-end-column="25" />
+            <state relative-caret-position="340">
+              <caret line="163" column="31" lean-forward="true" selection-start-line="163" selection-start-column="31" selection-end-line="163" selection-end-column="31" />
               <folding>
                 <element signature="n#!!doc" />
                 <element signature="n#!!block;n#TestNewNetworkManager#0" />
@@ -74,14 +73,8 @@
                 <element signature="e#3418#3428#0" />
                 <element signature="e#3445#3559#0" />
                 <element signature="e#3574#3688#0" />
-                <element signature="n#!!block;n#TestNetworkManager_Start#0" />
-                <element signature="e#3909#3974#0" />
-                <element signature="e#3960#3970#0" />
-                <element signature="n#!!block;n#SetNetworkManager#0" />
                 <element signature="e#4286#4303#0" />
                 <element signature="e#4428#4462#0" />
-                <element signature="e#4587#4621#0" />
-                <element signature="n#!!block;n#ClosureMemory#0" />
                 <element signature="e#4859#4880#0" />
               </folding>
             </state>
@@ -91,8 +84,8 @@
       <file leaf-file-name="network_manager.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="109" column="65" selection-start-line="109" selection-start-column="60" selection-end-line="109" selection-end-column="65" />
+            <state relative-caret-position="577">
+              <caret line="147" column="31" selection-start-line="147" selection-start-column="31" selection-end-line="147" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -125,6 +118,7 @@
       <find>receive message from</find>
       <find>timeout cha</find>
       <find>failed</find>
+      <find>channel</find>
     </findStrings>
     <replaceStrings>
       <replace>GrpcCommandHandlers</replace>
@@ -156,11 +150,11 @@
         <option value="$PROJECT_DIR$/avengers.go" />
         <option value="$PROJECT_DIR$/mock/process.go" />
         <option value="$PROJECT_DIR$/mock/process_test.go" />
-        <option value="$PROJECT_DIR$/mock/network_manager_test.go" />
-        <option value="$PROJECT_DIR$/mock/network_manager.go" />
         <option value="$PROJECT_DIR$/test/total_test.go" />
         <option value="$PROJECT_DIR$/mock/event_service_test.go" />
         <option value="$PROJECT_DIR$/mock/event_service.go" />
+        <option value="$PROJECT_DIR$/mock/network_manager_test.go" />
+        <option value="$PROJECT_DIR$/mock/network_manager.go" />
       </list>
     </option>
   </component>
@@ -234,7 +228,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestEventService_Publish in github.com/it-chain/avengers/mock">
+  <component name="RunManager" selected="Go Test.TestNetworkManager_Start in github.com/it-chain/avengers/mock">
     <configuration name="TestEventService_Publish in github.com/it-chain/avengers/mock" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="avengers" />
       <working_directory value="$PROJECT_DIR$/mock" />
@@ -297,24 +291,15 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestNetworkManager_Start in github.com/it-chain/avengers/mock" />
         <item itemvalue="Go Test.TestEventService_Publish in github.com/it-chain/avengers/mock" />
         <item itemvalue="Go Test.TestNetworkManager_Publish in github.com/it-chain/avengers/mock" />
-        <item itemvalue="Go Test.TestNetworkManager_Start in github.com/it-chain/avengers/mock" />
         <item itemvalue="Go Test.network_manager_test.go" />
         <item itemvalue="Go Test.TestProcess_RegisterHandler in github.com/it-chain/avengers/mock" />
       </list>
     </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="TestNetworkManager_Start_in_github_com_it-chain_avengers_mock - 2018.09.16 at 10h 00m 57s.xml">
-      <configuration name="TestNetworkManager_Start in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestNetworkManager_Start_in_github_com_it-chain_avengers_mock - 2018.09.16 at 10h 01m 18s.xml">
-      <configuration name="TestNetworkManager_Start in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestNetworkManager_Start_in_github_com_it-chain_avengers_mock - 2018.09.16 at 10h 01m 29s.xml">
-      <configuration name="TestNetworkManager_Start in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
-    </history-entry>
     <history-entry file="TestNetworkManager_Start_in_github_com_it-chain_avengers_mock - 2018.09.16 at 10h 02m 31s.xml">
       <configuration name="TestNetworkManager_Start in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
     </history-entry>
@@ -336,17 +321,27 @@
     <history-entry file="TestEventService_Publish_in_github_com_it-chain_avengers_mock - 2018.09.16 at 13h 31m 15s.xml">
       <configuration name="TestEventService_Publish in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
     </history-entry>
+    <history-entry file="TestEventService_Publish_in_github_com_it-chain_avengers_mock - 2018.09.16 at 13h 32m 54s.xml">
+      <configuration name="TestEventService_Publish in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestNetworkManager_Start_in_github_com_it-chain_avengers_mock - 2018.09.16 at 15h 06m 41s.xml">
+      <configuration name="TestNetworkManager_Start in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestNetworkManager_Start_in_github_com_it-chain_avengers_mock - 2018.09.16 at 15h 08m 58s.xml">
+      <configuration name="TestNetworkManager_Start in github.com/it-chain/avengers/mock" configurationId="GoTestRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17887668" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17887668" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32923076" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25025642" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25025642" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.21128204" />
@@ -358,7 +353,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32923076" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,14 +412,8 @@
             <element signature="e#3418#3428#0" />
             <element signature="e#3445#3559#0" />
             <element signature="e#3574#3688#0" />
-            <element signature="n#!!block;n#TestNetworkManager_Start#0" />
-            <element signature="e#3909#3974#0" />
-            <element signature="e#3960#3970#0" />
-            <element signature="n#!!block;n#SetNetworkManager#0" />
             <element signature="e#4286#4303#0" />
             <element signature="e#4428#4462#0" />
-            <element signature="e#4587#4621#0" />
-            <element signature="n#!!block;n#ClosureMemory#0" />
             <element signature="e#4859#4880#0" />
           </folding>
         </state>
@@ -614,13 +602,43 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="795">
           <caret line="59" column="23" lean-forward="true" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="23" />
+          <folding>
+            <element signature="e#609#756#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mock/event_service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+          <folding>
+            <element signature="e#604#635#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mock/event_service_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+          <folding>
+            <element signature="e#609#667#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="577">
+          <caret line="147" column="31" selection-start-line="147" selection-start-column="31" selection-end-line="147" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mock/network_manager_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="144" column="25" selection-start-line="144" selection-start-column="25" selection-end-line="144" selection-end-column="25" />
+        <state relative-caret-position="340">
+          <caret line="163" column="31" lean-forward="true" selection-start-line="163" selection-start-column="31" selection-end-line="163" selection-end-column="31" />
           <folding>
             <element signature="n#!!doc" />
             <element signature="n#!!block;n#TestNewNetworkManager#0" />
@@ -651,42 +669,9 @@
             <element signature="e#3418#3428#0" />
             <element signature="e#3445#3559#0" />
             <element signature="e#3574#3688#0" />
-            <element signature="n#!!block;n#TestNetworkManager_Start#0" />
-            <element signature="e#3909#3974#0" />
-            <element signature="e#3960#3970#0" />
-            <element signature="n#!!block;n#SetNetworkManager#0" />
             <element signature="e#4286#4303#0" />
             <element signature="e#4428#4462#0" />
-            <element signature="e#4587#4621#0" />
-            <element signature="n#!!block;n#ClosureMemory#0" />
             <element signature="e#4859#4880#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="109" column="65" selection-start-line="109" selection-start-column="60" selection-end-line="109" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mock/event_service_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
-          <folding>
-            <element signature="e#609#667#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mock/event_service.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
-          <folding>
-            <element signature="e#604#635#0" expanded="true" />
           </folding>
         </state>
       </provider>
