@@ -41,7 +41,7 @@ func (s *EventService) Publish(topic string, event interface{}) error {
 		return ErrEventType
 	}
 
-	if reflect.ValueOf(event).Elem().Type().Name() == "DeliverGrpc" {
+	if reflect.TypeOf(event).Name() == "DeliverGrpc" {
 		return s.PublishFunc(s.ProcessId, topic, event)
 	}
 
