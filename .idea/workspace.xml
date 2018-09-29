@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="074a7b9f-21fd-45f6-aa15-f5a6bf462e5e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/mock/network_manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/network_manager.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/network_manager_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/network_manager_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/event_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/event_service.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,79 +13,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="event_service.go" pinned="false" current-in-tab="false">
+    <leaf>
+      <file leaf-file-name="event_service.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mock/event_service.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
-              <folding>
-                <element signature="e#604#635#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="event_service_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mock/event_service_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-              <folding>
-                <element signature="e#609#667#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="network_manager_test.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mock/network_manager_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="163" column="31" lean-forward="true" selection-start-line="163" selection-start-column="31" selection-end-line="163" selection-end-column="31" />
-              <folding>
-                <element signature="n#!!doc" />
-                <element signature="n#!!block;n#TestNewNetworkManager#0" />
-                <element signature="n#!!block;n#TestNetworkManager_AddProcess#0" />
-                <element signature="n#!!block;n#TestNetworkManager_GrpcCall#0" />
-                <element signature="e#947#1029#0" />
-                <element signature="e#964#1026#0" />
-                <element signature="e#1029#1312#0" />
-                <element signature="e#1052#1114#0" />
-                <element signature="e#1114#1167#0" />
-                <element signature="e#1138#1148#0" />
-                <element signature="e#1200#1262#0" />
-                <element signature="e#1262#1307#0" />
-                <element signature="e#1349#1954#0" />
-                <element signature="e#1477#1565#0" />
-                <element signature="e#1637#1639#0" />
-                <element signature="e#1728#1951#0" />
-                <element signature="e#1810#1936#0" />
-                <element signature="n#!!block;n#TestNetworkManager_GrpcConsume#0" />
-                <element signature="e#2052#2185#0" />
-                <element signature="e#2069#2182#0" />
-                <element signature="e#2208#2321#0" />
-                <element signature="e#2321#2483#0" />
-                <element signature="e#2345#2360#0" />
-                <element signature="e#2429#2482#0" />
-                <element signature="e#2525#3121#0" />
-                <element signature="e#3063#3087#0" />
-                <element signature="e#3418#3428#0" />
-                <element signature="e#3445#3559#0" />
-                <element signature="e#3574#3688#0" />
-                <element signature="e#4286#4303#0" />
-                <element signature="e#4428#4462#0" />
-                <element signature="e#4859#4880#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="network_manager.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="147" column="31" selection-start-line="147" selection-start-column="31" selection-end-line="147" selection-end-column="31" />
+            <state relative-caret-position="662">
+              <caret line="47" column="14" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -152,9 +85,9 @@
         <option value="$PROJECT_DIR$/mock/process_test.go" />
         <option value="$PROJECT_DIR$/test/total_test.go" />
         <option value="$PROJECT_DIR$/mock/event_service_test.go" />
-        <option value="$PROJECT_DIR$/mock/event_service.go" />
         <option value="$PROJECT_DIR$/mock/network_manager_test.go" />
         <option value="$PROJECT_DIR$/mock/network_manager.go" />
+        <option value="$PROJECT_DIR$/mock/event_service.go" />
       </list>
     </option>
   </component>
@@ -167,7 +100,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="1680" />
     <option name="height" value="1050" />
   </component>
@@ -176,7 +109,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -197,6 +129,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -332,16 +265,15 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17887668" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18253969" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32923076" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25025642" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25025642" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.21128204" />
@@ -353,6 +285,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32923076" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,13 +300,17 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/mock/network_manager.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2793">
+          <caret line="147" column="31" selection-start-line="147" selection-start-column="31" selection-end-line="147" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mock/event_service.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="760">
           <caret line="43" column="7" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="67" />
-          <folding>
-            <element signature="e#604#635#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -382,40 +319,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1976">
           <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
-          <folding>
-            <element signature="n#!!doc" />
-            <element signature="n#!!block;n#TestNewNetworkManager#0" />
-            <element signature="n#!!block;n#TestNetworkManager_AddProcess#0" />
-            <element signature="n#!!block;n#TestNetworkManager_GrpcCall#0" />
-            <element signature="e#947#1029#0" />
-            <element signature="e#964#1026#0" />
-            <element signature="e#1029#1312#0" />
-            <element signature="e#1052#1114#0" />
-            <element signature="e#1114#1167#0" />
-            <element signature="e#1138#1148#0" />
-            <element signature="e#1200#1262#0" />
-            <element signature="e#1262#1307#0" />
-            <element signature="e#1349#1954#0" />
-            <element signature="e#1477#1565#0" />
-            <element signature="e#1637#1639#0" />
-            <element signature="e#1728#1951#0" />
-            <element signature="e#1810#1936#0" />
-            <element signature="n#!!block;n#TestNetworkManager_GrpcConsume#0" />
-            <element signature="e#2052#2185#0" />
-            <element signature="e#2069#2182#0" />
-            <element signature="e#2208#2321#0" />
-            <element signature="e#2321#2483#0" />
-            <element signature="e#2345#2360#0" />
-            <element signature="e#2429#2482#0" />
-            <element signature="e#2525#3121#0" />
-            <element signature="e#3063#3087#0" />
-            <element signature="e#3418#3428#0" />
-            <element signature="e#3445#3559#0" />
-            <element signature="e#3574#3688#0" />
-            <element signature="e#4286#4303#0" />
-            <element signature="e#4428#4462#0" />
-            <element signature="e#4859#4880#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -602,19 +505,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="795">
           <caret line="59" column="23" lean-forward="true" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="23" />
-          <folding>
-            <element signature="e#609#756#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mock/event_service.go">
+    <entry file="file://$PROJECT_DIR$/mock/network_manager_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
-          <folding>
-            <element signature="e#604#635#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="549">
+          <caret line="176" lean-forward="true" selection-start-line="176" selection-end-line="176" />
         </state>
       </provider>
     </entry>
@@ -622,9 +519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-          <folding>
-            <element signature="e#609#667#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -635,44 +529,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mock/network_manager_test.go">
+    <entry file="file://$PROJECT_DIR$/mock/event_service.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="163" column="31" lean-forward="true" selection-start-line="163" selection-start-column="31" selection-end-line="163" selection-end-column="31" />
-          <folding>
-            <element signature="n#!!doc" />
-            <element signature="n#!!block;n#TestNewNetworkManager#0" />
-            <element signature="n#!!block;n#TestNetworkManager_AddProcess#0" />
-            <element signature="n#!!block;n#TestNetworkManager_GrpcCall#0" />
-            <element signature="e#947#1029#0" />
-            <element signature="e#964#1026#0" />
-            <element signature="e#1029#1312#0" />
-            <element signature="e#1052#1114#0" />
-            <element signature="e#1114#1167#0" />
-            <element signature="e#1138#1148#0" />
-            <element signature="e#1200#1262#0" />
-            <element signature="e#1262#1307#0" />
-            <element signature="e#1349#1954#0" />
-            <element signature="e#1477#1565#0" />
-            <element signature="e#1637#1639#0" />
-            <element signature="e#1728#1951#0" />
-            <element signature="e#1810#1936#0" />
-            <element signature="n#!!block;n#TestNetworkManager_GrpcConsume#0" />
-            <element signature="e#2052#2185#0" />
-            <element signature="e#2069#2182#0" />
-            <element signature="e#2208#2321#0" />
-            <element signature="e#2321#2483#0" />
-            <element signature="e#2345#2360#0" />
-            <element signature="e#2429#2482#0" />
-            <element signature="e#2525#3121#0" />
-            <element signature="e#3063#3087#0" />
-            <element signature="e#3418#3428#0" />
-            <element signature="e#3445#3559#0" />
-            <element signature="e#3574#3688#0" />
-            <element signature="e#4286#4303#0" />
-            <element signature="e#4428#4462#0" />
-            <element signature="e#4859#4880#0" />
-          </folding>
+        <state relative-caret-position="662">
+          <caret line="47" column="14" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
         </state>
       </provider>
     </entry>
