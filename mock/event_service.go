@@ -48,6 +48,8 @@ func (s *EventService) Publish(topic string, event interface{}) error {
 	return nil
 }
 
+func (s *EventService) Close(){}
+
 func eventIsStruct(event interface{}) bool {
 	return reflect.TypeOf(event).Kind() == reflect.Struct
 }
