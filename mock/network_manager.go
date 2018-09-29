@@ -22,7 +22,7 @@ import (
 	"time"
 
 	"github.com/it-chain/engine/common/command"
-	"github.com/it-chain/engine/common/logger"
+	"github.com/it-chain/iLogger"
 	"reflect"
 )
 
@@ -50,7 +50,7 @@ func (n *NetworkManager) Push(processId string, queue string, c command.ReceiveG
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 
-	logger.Infof(nil, "push to channel: %s", processId)
+	iLogger.Infof(nil, "push to channel: %s", processId)
 	n.ChannelMap[processId][queue] <- c
 
 	return nil
@@ -93,11 +93,11 @@ func (n *NetworkManager) GrpcConsume(processId string, queue string, handler fun
 		for end {
 			select {
 			case message := <-n.ChannelMap[processId][queue]:
-				logger.Infof(nil, "receive message from : %s message: %v", processId, message)
+				iLogger.Infof(nil, "receive message from : %s message: %v", processId, message)
 				handler(message)
 
 			case <-time.After(4 * time.Second):
-				logger.Info(nil, "failed to consume, timed out!")
+				iLogger.Info(nil, "failed to consume, timed out!")
 				end = false
 			}
 		}
@@ -113,7 +113,7 @@ func (n *NetworkManager) Publish(from string, topic string, event interface{}) e
 
 	if reflect.ValueOf(event).Type().Name() == "DeliverGrpc"{
 		for _, id := range event.(command.DeliverGrpc).RecipientList {
-			logger.Infof(nil, "publish to: %s", id)
+			iLogger.Infof(nil, "publish to: %s", id)
 
 			go func(id string) {
 				n.ProcessMap[id].GrpcCommandReceiver <- command.ReceiveGrpc{
@@ -133,18 +133,18 @@ func (n *NetworkManager) Publish(from string, topic string, event interface{}) e
 func (n *NetworkManager) Start() {
 	for id, process := range n.ProcessMap {
 		go func(id string, process *Process) {
-			logger.Infof(nil, "process %s is running", process.Id)
+			iLogger.Infof(nil, "process %s is running", process.Id)
 			end := true
 			for end {
 				select {
 				case message := <-process.GrpcCommandReceiver:
-					logger.Infof(nil, "receive message from : %s message: %v", id, message)
+					iLogger.Infof(nil, "receive message from : %s message: %v", id, message)
 					for _, handler := range process.GrpcCommandHandlers {
 						handler(message)
 					}
 
 				case <-time.After(4 * time.Second):
-					logger.Info(nil, "failed to consume, timed out!")
+					iLogger.Info(nil, "failed to consume, timed out!")
 					end = false
 				}
 			}
