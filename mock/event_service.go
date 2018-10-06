@@ -19,6 +19,7 @@ package mock
 import (
 	"errors"
 	"reflect"
+	"time"
 )
 
 var ErrEventType = errors.New("Error type of event is not struct")
@@ -26,17 +27,20 @@ var ErrEventType = errors.New("Error type of event is not struct")
 type EventService struct {
 	ProcessId   string
 	PublishFunc func(processId string, topic string, event interface{}) error
+	delayTime   time.Duration
 }
 
 func NewEventService(processId string, publishFunc func(processId string, topic string, event interface{}) error) *EventService {
 	return &EventService{
 		ProcessId:   processId,
 		PublishFunc: publishFunc,
+		delayTime:   0,
 	}
 }
 
 func (s *EventService) Publish(topic string, event interface{}) error {
 
+	time.Sleep(s.delayTime)
 	if !eventIsStruct(event) {
 		return ErrEventType
 	}
@@ -48,7 +52,11 @@ func (s *EventService) Publish(topic string, event interface{}) error {
 	return nil
 }
 
-func (s *EventService) Close(){}
+func (s *EventService) SetDelayTime(t time.Duration) {
+	s.delayTime = t
+}
+
+func (s *EventService) Close() {}
 
 func eventIsStruct(event interface{}) bool {
 	return reflect.TypeOf(event).Kind() == reflect.Struct
