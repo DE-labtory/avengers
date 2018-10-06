@@ -18,18 +18,22 @@ package mock_test
 
 import (
 	"testing"
+	"time"
+
 	"github.com/it-chain/avengers/mock"
 	"github.com/it-chain/engine/common/command"
 )
 
 func TestEventService_Publish(t *testing.T) {
-	eventService:=mock.NewEventService("1", func(processId string, topic string, event interface{}) error {
+	eventService := mock.NewEventService("1", func(processId string, topic string, event interface{}) error {
 		return nil
 	})
 
+	eventService.SetDelayTime(5 * time.Millisecond)
+
 	event := command.DeliverGrpc{
-		MessageId:"1",
+		MessageId: "1",
 	}
 
-	eventService.Publish("message.deliver",event)
+	eventService.Publish("message.deliver", event)
 }
