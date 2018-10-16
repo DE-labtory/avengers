@@ -1,2 +1,13 @@
+# bnaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+
 # goland
 .idea
+
+# vendor
+/vendor-new
+/vendor
+/.vendor-new

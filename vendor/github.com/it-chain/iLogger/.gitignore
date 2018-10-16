@@ -1,8 +1,0 @@
-# Test binary, build with `go test -c`
-*.test
-
-# goland
-.idea
-
-# vendor
-/vendor
